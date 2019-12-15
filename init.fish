@@ -31,7 +31,7 @@ function autovenv --on-variable PWD -d "Automatic activation of Python virtual e
     set -l _tree "$PWD/."
     set -l _done false
     while true
-        set _tree (string split -r -m 1 -n '/' "$_tree" | select 1)
+        set _tree (string split -r -m 1 -n '/' "$_tree")[1]
         if ! string match -q -- "/*" $_tree 
             # This is a hack to stop when we have ascended all the way up to the top of the tree.
             # The string split command above eventually returns something like "home" when it tries
